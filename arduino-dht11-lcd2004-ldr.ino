@@ -1,3 +1,5 @@
+//Read temperature, humidity and brighness sensors
+
 #include <dht.h>
 #include <LiquidCrystal_I2C.h>
 
@@ -53,11 +55,13 @@ void loop() {
   lcd.print(brightness);
   lcd.print(" %");
  
-  //Send temperature and humidity data to Raspberry Pi
+  //Send temperature, humidity, brightness data to Raspberry Pi
   serialPi.print("<");
   serialPi.print(temperature);
   serialPi.print(",");
   serialPi.print(humidity);
+  serialPi.print(",");
+  serialPi.print(brightness);  
   serialPi.println(">");
 
   //Wait for 10 seconds
